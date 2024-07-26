@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线观看巴黎奥运会开幕式</title>
+</head>
+<body>
+    <iframe style="width: 100vw ;height: 300px;" src="https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=21686237&quality=0" frameborder="no"    framespacing="0" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+    <div id="main">
+        <p id="content">中国健儿加油!</p>
+        <p id="time">距离巴黎奥运会开幕式还有：</p>
+    </div>
+    <style>
+        body{
+            margin: 0;
+            background-color: black;
+            height: 100vh;
+        }
+
+        #content, #time{
+            color: aliceblue;
+            text-align: center;
+        }
+
+        #content{
+            font-weight: bold;
+            color:red;
+        }
+
+        #main{
+            position: relative;
+            top: 200px;
+        }
+    </style>
+    <script>
+        function getTime(){
+            //通知内容
+            let content = document.getElementById("time")
+            let date = new Date();
+            let seconds = date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
+            let plan = 25 * 3600 + 30 * 60;
+            //相差时间
+            seconds = plan - seconds;
+            let hour = parseInt(seconds / 3600);
+            let minute = parseInt((seconds - (hour * 3600)) / 60)
+            let second = parseInt(seconds - (hour * 3600) - (minute * 60));
+            content.innerHTML = `距离巴黎奥运会开幕式还有：${hour}时${minute}分${second}秒`;
+        }
+        setInterval(getTime, 1000);
+    </script>
+</body>
+</html>
