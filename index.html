@@ -3,51 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>在线观看巴黎奥运会开幕式</title>
+    <title>Block</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <iframe style="width: 100vw ;height: 300px;" src="https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=21686237&quality=0" frameborder="no"    framespacing="0" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
-    <div id="main">
-        <p id="content">中国健儿加油!</p>
-        <p id="time">距离巴黎奥运会开幕式还有：</p>
+    <!--作者: 林思帆-->
+    <!--方块-->
+    <div id="cube">     
+        <div id="left"></div>
+        <div id="right"></div>
+        <div id="front"></div>
+        <div id="behind"></div>
+        <div id="up"></div>
+        <div id="bottom"></div>
     </div>
+
     <style>
-        body{
-            margin: 0;
-            background-color: black;
-            height: 100vh;
-        }
-
-        #content, #time{
-            color: aliceblue;
-            text-align: center;
-        }
-
-        #content{
-            font-weight: bold;
-            color:red;
-        }
-
-        #main{
+        #cube{
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            margin: auto;
             position: relative;
-            top: 200px;
+            top: calc((100vh - 200px) / 2);
+            animation: RT 10s linear infinite;
+        }
+
+        @keyframes RT{
+            0%      {transform: rotateY(0deg) rotateZ(0deg);}
+            14.3%   {transform: rotateY(90deg) rotateZ(90deg);}
+            28.5%   {transform: rotateY(180deg) rotateZ(-90deg);}
+            42.8%   {transform: rotateY(270deg) rotateZ(90deg);}
+            57.2%   {transform: rotateY(90deg) rotateZ(0deg);}
+            71.5%   {transform: rotateY(0deg) rotateZ(180deg);}
+            85.5%   {transform: rotateY(-90deg) rotateZ(360deg);}
+            100%    {transform: rotateY(0deg) rotateZ(0deg);}
+        }
+
+        #cube div{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+        }
+
+        #front{
+            transform: translateZ(200px);
+            background-color: #ff7800;
+        }
+
+        #bottom{
+            transform: rotateX(180deg);
+            background-color: #986a44;
+        }
+
+        #left{
+            background-color: #33d17a;
+            transform: translateZ(100px) rotateY(-90deg) translateZ(100px);
+        }
+
+        #right{
+            background-color: #f6d32d;
+            transform: translateZ(100px) rotateY(90deg) translateZ(100px);
+        }
+
+        #up{
+            background-color: #3584e4;
+            transform: translateZ(100px) rotateX(90deg) translateZ(-100px);
+        }
+
+        #behind{
+            background-color: #e01b24;
+            transform: translateZ(100px) rotateX(-90deg) translateZ(-100px);
         }
     </style>
-    <script>
-        function getTime(){
-            //通知内容
-            let content = document.getElementById("time")
-            let date = new Date();
-            let seconds = date.getHours() * 3600 + date.getMinutes() * 60 + date.getSeconds();
-            let plan = 25 * 3600 + 30 * 60;
-            //相差时间
-            seconds = plan - seconds;
-            let hour = parseInt(seconds / 3600);
-            let minute = parseInt((seconds - (hour * 3600)) / 60)
-            let second = parseInt(seconds - (hour * 3600) - (minute * 60));
-            content.innerHTML = `距离巴黎奥运会开幕式还有：${hour}时${minute}分${second}秒`;
-        }
-        setInterval(getTime, 1000);
-    </script>
 </body>
 </html>
