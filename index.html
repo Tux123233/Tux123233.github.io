@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Block</title>
+    <title>我的纪念品</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -19,6 +19,10 @@
     </div>
 
     <style>
+        body{
+            background-color: black;
+        }
+
         #cube{
             width: 200px;
             height: 200px;
@@ -44,37 +48,40 @@
             position: absolute;
             width: 200px;
             height: 200px;
+            background-size: cover;
         }
 
         #front{
             transform: translateZ(200px);
-            background-color: #ff7800;
+            background-image: url("./抱团合照.jpg");
         }
 
         #bottom{
             transform: rotateX(180deg);
-            background-color: #986a44;
+            background-image: url("./合照.jpg");
         }
 
         #left{
-            background-color: #33d17a;
             transform: translateZ(100px) rotateY(-90deg) translateZ(100px);
+            background-image: url("./校庆合照.jpg");
         }
 
         #right{
-            background-color: #f6d32d;
             transform: translateZ(100px) rotateY(90deg) translateZ(100px);
+            background-image: url("./毕业合照.jpg");
         }
 
         #up{
-            background-color: #3584e4;
             transform: translateZ(100px) rotateX(90deg) translateZ(-100px);
+            background-image: url("./李梓奇.jpg");
         }
 
         #behind{
-            background-color: #e01b24;
             transform: translateZ(100px) rotateX(-90deg) translateZ(-100px);
+            background-image: url("./李应钿.jpg");
         }
     </style>
+
+    <script src="https://api.vvhan.com/api/script/snow"></script>
 </body>
 </html>
